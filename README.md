@@ -24,4 +24,5 @@ En esta oportunidad, les comparto una serie de códigos en R que permiten grafic
   <img src="piramide_ggplot2.png" width="45%" />
 </div>
 
+
 RPubs: https://rpubs.com/delacruz-renzo/piramide-poblacional
