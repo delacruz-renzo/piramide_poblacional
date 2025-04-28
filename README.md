@@ -1,6 +1,7 @@
 ## Pirámides de Población
 <p align="justify">
 Las pirámides poblacionales, también denominadas pirámides demográficas, son representaciones gráficas de la estructura de una población, clasificados por sexo y grupos etarios, en un espacio geográfico y período determinados. Estas representaciones adoptan la forma de un doble histograma horizontal, en el que los datos suelen agruparse en intervalos quinquenales (0–4, 5–9, 10–14, etc.). Convencionalmente, la población masculina se dispone a la izquierda del eje central y la población femenina a la derecha.
+
 De acuerdo con la forma que adopte, la pirámide poblacional se clasifica en cinco tipos:
 
 - Pirámide Progresiva (Creciente, Triangular o Expansiva): Se caracteriza por una base amplia, mientras que las secciones medias y superiores son más estrechas. Este tipo de pirámide refleja una mayor proporción de población juvenil en comparación con la adulta.
@@ -18,7 +19,11 @@ Las pirámides poblacionales son herramientas fundamentales en el análisis demo
 En esta oportunidad, les comparto una serie de códigos en R que permiten graficar pirámides poblacionales de manera sencilla y personalizable, con el uso de las librerias "pyramid" y "ggplot2".
 </p>
 <div align="center">
-<img src="Mapa.png" width="700"/>
+<img src="piramide_pyramid.png" width="700"/>
+</div>
+
+<div align="center">
+<img src="piramide_ggplot2.png" width="700"/>
 </div>
 
 RPubs: https://rpubs.com/delacruz-renzo/piramide-poblacional
