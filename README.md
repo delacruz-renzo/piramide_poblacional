@@ -20,7 +20,7 @@ En esta oportunidad, les comparto una serie de códigos en R que permiten grafic
 </p>
 
 <div style="display: flex; justify-content: space-around;">
-  <img src="piramide_pyramid.png" width="45%" />
+  <img src="piramide_pyramid3.png" width="45%" />
   <img src="piramide_ggplot2.png" width="45%" />
 </div>
 
