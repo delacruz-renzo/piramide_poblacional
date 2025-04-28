@@ -18,12 +18,10 @@ Las pirámides poblacionales son herramientas fundamentales en el análisis demo
 
 En esta oportunidad, les comparto una serie de códigos en R que permiten graficar pirámides poblacionales de manera sencilla y personalizable, con el uso de las librerias "pyramid" y "ggplot2".
 </p>
-<div align="center">
-<img src="piramide_pyramid.png" width="700"/>
-</div>
 
-<div align="center">
-<img src="piramide_ggplot2.png" width="700"/>
+<div style="display: flex; justify-content: space-around;">
+  <img src="piramide_pyramid.png" width="45%" />
+  <img src="piramide_ggplot2.png" width="45%" />
 </div>
 
 RPubs: https://rpubs.com/delacruz-renzo/piramide-poblacional
