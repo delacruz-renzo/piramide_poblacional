@@ -1,0 +1,82 @@
+---
+title: "Pirámides de Población"
+author: "Renzo De La Cruz"
+---
+
+GMAIL: renzoangeldelacruz@gmail.com
+GitHub: https://github.com/delacruz-renzo
+
+## Importar datos
+library(readxl)
+library(dplyr)
+data <- read_excel("d:/Lenovo/Desktop/GEO/PROJECT_4/data.xlsx")
+head(data, 18)
+str(data)
+## Calcular los porcentajes de la población por grupo etario.
+data1 <- data %>%
+  mutate(Hombre_porcentaje = Hombre/sum(Hombre)*100, 
+         Mujer_porcentaje = Mujer/sum(Mujer)*100) %>%
+  select(Grupos, Hombre_porcentaje, Mujer_porcentaje)
+head(data1, 18)
+## Convertir la columnna Grupos en tipo factor (asignar orden específico).
+data1$Grupos <- factor(data1$Grupos, levels = unique(data1$Grupos))
+### pyramid
+library(pyramid)
+pyramids(Left = data1$Hombre_porcentaje, 
+         Right = data1$Mujer_porcentaje, 
+         Center = data1$Grupos,
+         Rlab = "Mujeres (%)", Llab = "Hombres (%)", 
+         Clab = "Grupo de Edad", Cgap=0.5,
+         Lcol = "#07b6c3", Rcol = "#e0706d",
+         main = "Pirámide Poblacional de la Región Lima, Perú - 2017")
+### ggplot2
+library(tidyverse)
+### Convertir el DataFrame de un formato ancho a largo.
+data2 <- data1 %>% gather(Sexo, Poblacion, -1)
+head(data2)
+### Graficar pirámide poblacional con un "theme_classic".
+library(ggplot2)
+ggplot(data2, aes(x = Grupos, fill = Sexo,
+                y = ifelse(Sexo == "Hombre_porcentaje", -Poblacion, Poblacion))) +
+  geom_bar(stat = "identity") +
+  labs(y = "Porcentaje (%)", x = "Grupo de Edad") +
+  ggtitle("Pirámide Poblacional de la Región Lima, Perú - 2017") +
+  coord_flip() +
+  theme_classic() +
+  scale_y_continuous(breaks = c(seq(-10, 0, by = 2), seq(0, 10, by = 2)),
+    labels = c(seq(-10, 0, by = 2) * -1, seq(0, 10, by = 2))) +
+  scale_fill_manual(values = c("Hombre_porcentaje" = "#07b6c3", "Mujer_porcentaje" = "#e0706d"),
+                    labels = c("Hombres", "Mujeres")) +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"),
+        legend.title = element_text(hjust = 0.5, face = "bold"))
+### Graficar pirámide poblacional con un "theme_minimal".
+library(ggplot2)
+ggplot(data2, aes(x = Grupos, fill = Sexo,
+                y = ifelse(Sexo == "Hombre_porcentaje", -Poblacion, Poblacion))) +
+  geom_bar(stat = "identity") +
+  labs(y = "Porcentaje (%)", x = "Grupo de Edad") +
+  ggtitle("Pirámide Poblacional de la Región Lima, Perú - 2017") +
+  coord_flip() +
+  theme_minimal() +
+  scale_y_continuous(breaks = c(seq(-10, 0, by = 2), seq(0, 10, by = 2)),
+    labels = c(seq(-10, 0, by = 2) * -1, seq(0, 10, by = 2))) +
+  scale_fill_manual(values = c("Hombre_porcentaje" = "#07b6c3", "Mujer_porcentaje" = "#e0706d"),
+                    labels = c("Hombres", "Mujeres")) +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"),
+        legend.title = element_text(hjust = 0.5, face = "bold"))
+### Graficar pirámide poblacional con un "theme_gray".
+library(ggplot2)
+ggplot(data2, aes(x = Grupos, fill = Sexo,
+                y = ifelse(Sexo == "Hombre_porcentaje", -Poblacion, Poblacion))) +
+  geom_bar(stat = "identity") +
+  labs(y = "Porcentaje (%)", x = "Grupo de Edad") +
+  ggtitle("Pirámide Poblacional de la Región Lima, Perú - 2017") +
+  coord_flip() +
+  theme_gray() +
+  scale_y_continuous(breaks = c(seq(-10, 0, by = 2), seq(0, 10, by = 2)),
+    labels = c(seq(-10, 0, by = 2) * -1, seq(0, 10, by = 2))) +
+  scale_fill_manual(values = c("Hombre_porcentaje" = "#07b6c3", "Mujer_porcentaje" = "#e0706d"),
+                    labels = c("Hombres", "Mujeres")) +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"),
+        legend.title = element_text(hjust = 0.5, face = "bold"))
+
